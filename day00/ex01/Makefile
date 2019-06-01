@@ -17,7 +17,7 @@ HEADERS := $(wildcard *.hpp)
 OBJECTS := $(SOURCES:%.cpp=%.o) 
 
 CC = g++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 $(NAME):
 	$(CC) $(CFLAGS) -I=$(HEADERS) -c $(SOURCES)
