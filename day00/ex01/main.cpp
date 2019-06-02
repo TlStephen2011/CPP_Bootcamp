@@ -104,8 +104,6 @@ static void conditionalDisplay(std::string field)
 		}
 		std::cout << result;
 	}
-	
-	
 }
 
 static void displayPhoneBook(Contact phonebook[], int contactsIndex)
