@@ -125,15 +125,42 @@ static void displayPhoneBook(Contact phonebook[], int contactsIndex)
 		std::cout << "|";
 		std::cout << std::setw(10);
 		conditionalDisplay(phonebook[i].getNickName());
-		std::cout << "|";
 		std::cout << std::endl;
 	}
+}
+
+static void displayDetails(Contact phonebook[], int numContacts)
+{
+	int index;
+
+	std::cout << "Enter an index to view details for the contact" << std::endl;
+	std::cin >> index;
+	std::cin.ignore(1000, '\n');
+	if (index > numContacts + 1 || index < 1)
+	{
+		std::cout << "You have entered an invalid index" << std::endl;
+	}
+	else
+	{
+		std::cout << "First Name: " << phonebook[index - 1].getFirstName() << std::endl;
+		std::cout << "Last Name: " << phonebook[index - 1].getLastName() << std::endl;
+		std::cout << "Nick Name: " << phonebook[index - 1].getNickName() << std::endl;
+		std::cout << "Login: " << phonebook[index - 1].getLogin() << std::endl;
+		std::cout << "Postal Address: " << phonebook[index - 1].getPostalAddress() << std::endl;
+		std::cout << "Email Address: " << phonebook[index - 1].getEmailAddress() << std::endl;
+		std::cout << "Birthday Date: " << phonebook[index - 1].getBirthdayDate() << std::endl;
+		std::cout << "Favorite Meal: " << phonebook[index - 1].getFavoriteMeal() << std::endl;
+		std::cout << "Underwear Color: " << phonebook[index - 1].getUnderwearColor() << std::endl;
+		std::cout << "Darkest Secret: " << phonebook[index - 1].getDarkestSecret() << std::endl;     
+	}
+	
 }
 
 static void doSearch(Contact phonebook[], int numContacts)
 {
 	displayPhoneBook(phonebook, numContacts);
-	std::cout << "SEARCHING..." << std::endl;
+	displayDetails(phonebook, numContacts);
+	std::cout.flush();
 }
 
 
@@ -147,22 +174,22 @@ int		main(void)
 		std::string command = showMenu();
 		switch (hashIt(command))
 		{
-		case ADD:
-			if (numContacts == MAX_CONTACTS - 1)
-			{
-				std::cout << "Phonebook limit reached. Try another command" << std::endl;
+			case ADD:
+				if (numContacts == MAX_CONTACTS)
+				{
+					std::cout << "Phonebook limit reached. Try another command" << std::endl;
+					break;
+				}
+				phonebook[numContacts++] = doAdd();
 				break;
-			}
-			phonebook[numContacts++] = doAdd();
-			break;
-		case SEARCH:
-			doSearch(phonebook, numContacts);
-			break;
-		case EXIT:
-			return 0;		
-		default:
-			std::cout << "You have entered an invalid command. Please try again." << std::endl;
-			break;
+			case SEARCH:
+				doSearch(phonebook, numContacts);
+				break;
+			case EXIT:
+				return 0;		
+			default:
+				std::cout << "You have entered an invalid command. Please try again." << std::endl;
+				break;
 		}
 	}
 
