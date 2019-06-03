@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/02 22:12:45 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/02 22:12:45 by tstephen         ###   ########.fr       */
+/*   Created: 2019/06/03 07:10:24 by tstephen          #+#    #+#             */
+/*   Updated: 2019/06/03 07:10:24 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
+#include <string>
 
-Brain::Brain()
+class Weapon
 {
-    setAddress();
-    return;
-}
+    public:
+        Weapon(std::string);
+        ~Weapon();
+        std::string const &getType();
+        void setType(std::string);
+    private:
+        std::string type;
+};
 
-Brain::~Brain()
-{
-    return;
-}
-
-void Brain::setAddress()
-{
-    std::stringstream buff;
-
-    buff << this;
-    buff >> this->_address;
-    //this->_address = buff.str();
-    return;
-}
-
-std::string Brain::identify()
-{
-    return this->_address;
-}
-
-std::string Brain::getAddress()
-{
-    return this->_address;
-}
+#endif

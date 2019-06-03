@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/02 22:12:45 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/02 22:12:45 by tstephen         ###   ########.fr       */
+/*   Created: 2019/06/03 08:00:17 by tstephen          #+#    #+#             */
+/*   Updated: 2019/06/03 08:00:17 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#include "HumanB.hpp"
 
-Brain::Brain()
+HumanB::HumanB(std::string val)
 {
-    setAddress();
+    this->name = val;
+}
+
+HumanB::~HumanB()
+{
     return;
 }
 
-Brain::~Brain()
+void HumanB::setWeapon(Weapon &weapon)
 {
-    return;
+    this->weapon = &weapon;
 }
 
-void Brain::setAddress()
+void HumanB::attack()
 {
-    std::stringstream buff;
-
-    buff << this;
-    buff >> this->_address;
-    //this->_address = buff.str();
-    return;
-}
-
-std::string Brain::identify()
-{
-    return this->_address;
-}
-
-std::string Brain::getAddress()
-{
-    return this->_address;
+    std::cout << this->name << " attacks with his " << \
+    this->weapon->getType() << std::endl;
 }

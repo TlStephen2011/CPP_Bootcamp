@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/02 22:12:45 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/02 22:12:45 by tstephen         ###   ########.fr       */
+/*   Created: 2019/06/03 09:41:56 by tstephen          #+#    #+#             */
+/*   Updated: 2019/06/03 09:41:56 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
+# include <string>
+# include "Weapon.hpp"
+# include <iostream>
 
-Brain::Brain()
+class HumanB
 {
-    setAddress();
-    return;
-}
+    public:
+        HumanB(std::string);
+        ~HumanB();
+        void setWeapon(Weapon&);
+        void attack();
+    private:
+        std::string name;
+        Weapon *weapon;
+};
 
-Brain::~Brain()
-{
-    return;
-}
-
-void Brain::setAddress()
-{
-    std::stringstream buff;
-
-    buff << this;
-    buff >> this->_address;
-    //this->_address = buff.str();
-    return;
-}
-
-std::string Brain::identify()
-{
-    return this->_address;
-}
-
-std::string Brain::getAddress()
-{
-    return this->_address;
-}
+#endif
