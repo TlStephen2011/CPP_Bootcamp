@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 12:27:10 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/03 15:29:56 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/03 16:14:18 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void searchAndReplace(std::string& str,
 
 static std::string getFileContent(const std::string& path)
 {
-  std::ifstream file(path);
-  std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    //TODO: Add error handling
+    std::ifstream file(path);
+    std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 
-  return content;
+    return content;
 }
 
 static bool validateArguments(char *argv[])
@@ -47,6 +48,7 @@ static bool validateArguments(char *argv[])
 
 static void writeToFile(std::string filename, std::string content)
 {
+    //TODO: Add error handling
     std::ofstream ofs(filename + ".replace", std::ios::out);
     ofs << content;
     return;
