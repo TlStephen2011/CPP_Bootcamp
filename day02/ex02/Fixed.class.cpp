@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 14:20:12 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/04 14:20:20 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/06 12:31:42 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,70 @@ std::ostream& operator<<(std::ostream& o, Fixed const &val)
     return o;
 }
 
-bool Fixed::operator<(Fixed const &rhs)
+bool Fixed::operator<(Fixed const &rhs) const
 {
     if (this->toFloat() < rhs.toFloat())
         return true;
     return false;
+}
+
+bool Fixed::operator<=(Fixed const &rhs) const
+{
+    if (this->toFloat() <= rhs.toFloat())
+        return true;
+    return false;
+}
+
+bool Fixed::operator>=(Fixed const &rhs) const
+{
+    if (this->toFloat() >= rhs.toFloat())
+        return true;
+    return false;
+}
+
+bool Fixed::operator>(Fixed const &rhs) const
+{
+    if (this->toFloat() > rhs.toFloat())
+        return true;
+    return false;
+}
+
+bool Fixed::operator==(Fixed const &rhs) const
+{
+    if (this->toFloat() == rhs.toFloat())
+        return true;
+    return false;
+}
+
+bool Fixed::operator!=(Fixed const &rhs) const
+{
+    if (this->toFloat() != rhs.toFloat())
+        return true;
+    return false;
+}
+
+Fixed Fixed::operator+(Fixed const &rhs) const
+{
+    Fixed temp(this->toFloat() + rhs.toFloat());
+    return temp;
+}
+
+Fixed Fixed::operator-(Fixed const &rhs) const
+{
+    Fixed temp(this->toFloat() - rhs.toFloat());
+    return temp;
+}
+
+Fixed Fixed::operator*(Fixed const &rhs) const
+{
+    Fixed temp(this->toFloat() * rhs.toFloat());
+    return temp;
+}
+
+Fixed Fixed::operator/(Fixed const &rhs) const
+{
+    Fixed temp(this->toFloat() / rhs.toFloat());
+    return temp;
 }
 
 const int Fixed::fractionalBits = 8;
