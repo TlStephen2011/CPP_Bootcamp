@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 18:37:16 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/06 18:37:16 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/06 23:59:45 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ FragTrap::FragTrap(std::string name) :
     std::cout << "Name constructor called" << std::endl;
 }
 
+FragTrap::~FragTrap()
+{
+	std::cout << "destructing " << this->_name << std::endl;
+	return;
+}
+
 FragTrap& FragTrap::operator=(FragTrap const &rhs)
 {
     this->_hitPoints = rhs.getHitPoints();
@@ -66,15 +72,15 @@ FragTrap::FragTrap(const FragTrap &copy)
 void FragTrap::rangedAttack(std::string const &target) const
 {
     std::cout << "FR4G-TP <" << this->getName() << "> attacks <" \
-    << target << "> at range, causing" << this->getRangedAttackDamage() \
-    << " points of damage !" << std::endl;
+    << target << "> at range, causing " << this->getRangedAttackDamage() << \
+	" points of damage !" << std::endl;
 }
 
 void FragTrap::meleeAttack(std::string const &target) const
 {
     std::cout << "FR4G-TP <" << this->getName() << "> attacks <" \
-    << target << "> at range, causing" << this->getMeleeAttackDamage() \
-    << " points of damage !" << std::endl;
+    << target << "> at range, causing " << this->getMeleeAttackDamage() << \
+    " points of damage !" << std::endl;
 }
 
 unsigned int FragTrap::takeDamage(unsigned int amount)
@@ -85,9 +91,9 @@ unsigned int FragTrap::takeDamage(unsigned int amount)
         return 0;
     }
 
-    unsigned int damage = amount - this->_armorDamageReduction;
+    int damage = amount - this->_armorDamageReduction;
 
-    if (this->_hitPoints - damage >= 0)
+    if (static_cast<int>(this->_hitPoints) - damage >= 0)
     {
         this->_hitPoints -= damage;
         std::cout << this->_name << " took " << damage << " damage." << std::endl;
@@ -106,7 +112,8 @@ unsigned int FragTrap::beRepaired(unsigned int amount)
     if (this->_hitPoints + amount > this->_maxHitPoints)
     {
         std::cout << this->_name << " repairing " << \
-        this->_maxHitPoints - this->_hitPoints << std::endl;
+        this->_maxHitPoints - this->_hitPoints << \
+		" hit points" << std::endl;
 
         this->_hitPoints = this->_maxHitPoints;
         return this->_maxHitPoints - this->_hitPoints;
@@ -114,7 +121,7 @@ unsigned int FragTrap::beRepaired(unsigned int amount)
     else
     {
         std::cout << this->_name << " repairing " << \
-        amount << std::endl;
+        amount << " hit points" << std::endl;
 
         this->_hitPoints += amount;
         return amount;
@@ -122,6 +129,61 @@ unsigned int FragTrap::beRepaired(unsigned int amount)
     
 }
 
+void FragTrap::vaulthunter_dot_exe(std::string const &target)
+{
+	typedef void (FragTrap::*specialAttacks)(std::string const&) const;
+	specialAttacks arr[5] = {
+		&FragTrap::deathFromBelow,
+		&FragTrap::angryGrenade,
+		&FragTrap::dashToFlank,
+		&FragTrap::bladeWall,
+		&FragTrap::hookShot,
+	};
+
+	if (this->_energyPoints < 25)
+	{
+		std::cout << "insufficient energy, require " << \
+		25 - this->_energyPoints << " more" << std::endl;
+	}
+	else
+	{
+		//srand(time(NULL));
+		int random = rand() % 5;
+		(this->*(arr[random]))(target);
+		this->_energyPoints -= 25;
+	}
+}
+
+void FragTrap::deathFromBelow(std::string const &target) const
+{
+	std::cout << "dives underground to conduct a sweeping blow pulling " << \
+	target << " underground" << std::endl;
+}
+
+void FragTrap::angryGrenade(std::string const &target) const
+{
+	std::cout << "throws a grenade at " << \
+	target << " violently, high chance of rebound" << std::endl;
+}
+
+void FragTrap::dashToFlank(std::string const &target) const
+{
+	std::cout << "gains 3 dashes to be used to avoid " << \
+	target << " attacks" << std::endl;
+}
+
+void FragTrap::bladeWall(std::string const &target) const
+{
+	std::cout << "puts up a wall of blades around " << \
+	target << " only 1 way out" << std::endl;
+}
+
+void FragTrap::hookShot(std::string const &target) const
+{
+	std::cout << "lowers " << \
+	target << " health and fires a grappling hook, if it hits it will pull " << \
+	target << " closer"  << std::endl;
+}
 
 //Getters
 

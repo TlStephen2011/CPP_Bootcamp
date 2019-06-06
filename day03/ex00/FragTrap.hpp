@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 18:30:48 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/06 18:30:48 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/06 23:43:38 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ class FragTrap
         void meleeAttack(std::string const &target) const;
         unsigned int takeDamage(unsigned int amount);
         unsigned int beRepaired(unsigned int amount);
-
+		void vaulthunter_dot_exe(std::string const &target);
+		
         // Getters
         unsigned int getHitPoints() const;
         unsigned int getMaxHitPoints() const;
@@ -52,6 +53,11 @@ class FragTrap
     protected:
 
     private:
+		void deathFromBelow(std::string const &target) const;
+		void bladeWall(std::string const &target) const;
+		void angryGrenade(std::string const &target) const;
+		void hookShot(std::string const &target) const;
+		void dashToFlank(std::string const &target) const;
         unsigned int _hitPoints;
         unsigned int _maxHitPoints;
         unsigned int _energyPoints;
