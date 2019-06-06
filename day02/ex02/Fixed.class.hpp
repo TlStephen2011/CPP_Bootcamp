@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 14:14:13 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/06 12:31:00 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/06 13:36:14 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ class Fixed
         Fixed operator-(Fixed const&) const;
         Fixed operator*(Fixed const&) const;
         Fixed operator/(Fixed const&) const;
+        Fixed& operator++();
+        Fixed operator++(int);
+        Fixed& operator--();
+        Fixed operator--(int);
+        static Fixed& min(Fixed&, Fixed&);
+        static const Fixed& min(const Fixed&, const Fixed&);
+        static Fixed& max(Fixed&, Fixed&);
+        static const Fixed& max(const Fixed&, const Fixed&);
         int getRawBits() const;
         void setRawBits(int const);
         float toFloat() const;
@@ -43,5 +51,6 @@ class Fixed
 };
 
 std::ostream& operator<<(std::ostream&, Fixed const& );
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 14:20:12 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/06 12:31:42 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/06 13:37:59 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,80 @@ Fixed Fixed::operator/(Fixed const &rhs) const
 {
     Fixed temp(this->toFloat() / rhs.toFloat());
     return temp;
+}
+
+Fixed& Fixed::operator++()
+{
+    this->value += 1;
+    return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+    Fixed temp(*this);
+    operator++();
+    return temp;
+}
+
+Fixed& Fixed::operator--()
+{
+    this->value -= 1;
+    return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Fixed temp(*this);
+    operator--();
+    return temp;
+}
+
+Fixed& Fixed::min(Fixed &val1, Fixed &val2)
+{
+    if (val1 < val2)
+    {
+        return val1;
+    }
+    else
+    {
+        return val2;
+    }
+}
+
+const Fixed& Fixed::min(Fixed const &val1, Fixed const &val2)
+{
+    if (val1 < val2)
+    {
+        return val1;
+    }
+    else
+    {
+        return val2;
+    }
+}
+
+Fixed& Fixed::max(Fixed &val1, Fixed &val2)
+{
+    if (val1 > val2)
+    {
+        return val1;
+    }
+    else
+    {
+        return val2;
+    }
+}
+
+const Fixed& Fixed::max(Fixed const &val1, Fixed const &val2)
+{
+    if (val1 > val2)
+    {
+        return val1;
+    }
+    else
+    {
+        return val2;
+    }
 }
 
 const int Fixed::fractionalBits = 8;
