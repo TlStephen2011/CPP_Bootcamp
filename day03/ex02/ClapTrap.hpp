@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 14:41:19 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 14:48:06 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:12:03 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ class ClapTrap
         ClapTrap(ClapTrap const &copy);
         ClapTrap(std::string name);
         ClapTrap& operator=(ClapTrap const &rhs);
-        void rangedAttack(std::string const &target) const;
-        void meleeAttack(std::string const &target) const;
         unsigned int takeDamage(unsigned int amount);
         unsigned int beRepaired(unsigned int amount);
 

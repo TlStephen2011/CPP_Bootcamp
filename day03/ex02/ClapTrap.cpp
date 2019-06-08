@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 14:41:16 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 15:53:27 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:31:37 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,6 @@ ClapTrap& ClapTrap::operator=(ClapTrap const &rhs)
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
     *this = copy;
-}
-
-void ClapTrap::rangedAttack(std::string const &target) const
-{
-    std::cout << "ClapTrap <" << this->getName() << "> attacks <" \
-    << target << "> at range, causing " << this->getRangedAttackDamage() << \
-	" points of damage !" << std::endl;
-}
-
-void ClapTrap::meleeAttack(std::string const &target) const
-{
-    std::cout << "ClapTrap <" << this->getName() << "> attacks <" \
-    << target << "> in melee range, causing " << this->getMeleeAttackDamage() << \
-    " points of damage !" << std::endl;
 }
 
 unsigned int ClapTrap::takeDamage(unsigned int amount)

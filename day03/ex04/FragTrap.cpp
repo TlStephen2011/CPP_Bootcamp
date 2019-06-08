@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 18:37:16 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 15:35:24 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:20:45 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ FragTrap& FragTrap::operator=(FragTrap const &rhs)
     this->setArmorDamageReduction(rhs.getArmorDamageReduction());
     
     return *this;
+}
+
+void FragTrap::rangedAttack(std::string const &target) const
+{
+    std::cout << "FragTrap <" << this->getName() << "> attacks <" \
+    << target << "> at range, causing " << this->getRangedAttackDamage() << \
+	" points of damage !" << std::endl;
+}
+
+void FragTrap::meleeAttack(std::string const &target) const
+{
+    std::cout << "FragTrap <" << this->getName() << "> attacks <" \
+    << target << "> in melee range, causing " << this->getMeleeAttackDamage() << \
+    " points of damage !" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &copy)

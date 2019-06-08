@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 18:37:16 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 15:35:24 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:13:18 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,20 @@ void FragTrap::vaulthunter_dot_exe(std::string const &target)
 		(this->*(arr[random]))(target);
 		this->setEnergyPoints(this->getEnergyPoints() - 25);
 	}
+}
+
+void FragTrap::rangedAttack(std::string const &target) const
+{
+    std::cout << "FragTrap <" << this->getName() << "> attacks <" \
+    << target << "> at range, causing " << this->getRangedAttackDamage() << \
+	" points of damage !" << std::endl;
+}
+
+void FragTrap::meleeAttack(std::string const &target) const
+{
+    std::cout << "FragTrap <" << this->getName() << "> attacks <" \
+    << target << "> in melee range, causing " << this->getMeleeAttackDamage() << \
+    " points of damage !" << std::endl;
 }
 
 void FragTrap::deathFromBelow(std::string const &target) const

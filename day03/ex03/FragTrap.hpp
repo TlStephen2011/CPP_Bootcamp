@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 18:30:48 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 15:24:24 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:18:48 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ class FragTrap : public ClapTrap
       FragTrap(std::string name);
       FragTrap& operator=(FragTrap const &rhs);
       void vaulthunter_dot_exe(std::string const &target);     
-
+      void rangedAttack(std::string const &target) const;
+      void meleeAttack(std::string const &target) const;
+      
     private:
       void deathFromBelow(std::string const &target) const;
       void bladeWall(std::string const &target) const;

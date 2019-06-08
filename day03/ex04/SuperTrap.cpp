@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 16:49:27 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 17:35:30 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:33:12 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,30 @@
 
 SuperTrap::SuperTrap()
 {
-    this->FragTrap::setHitPoints(FragTrap::getHitPoints());
-    this->FragTrap::setMaxHitPoints(FragTrap::getMaxHitPoints());
-    this->NinjaTrap::setEnergyPoints(NinjaTrap::getEnergyPoints());
-    this->NinjaTrap::setMaxEnergyPoints(NinjaTrap::getMaxEnergyPoints());
-    this->NinjaTrap::setLevel(1);
-    this->NinjaTrap::setName(NinjaTrap::getName());
-    this->NinjaTrap::setMeleeAttackDamage(NinjaTrap::getMeleeAttackDamage());
-    this->FragTrap::setRangedAttackDamage(FragTrap::getRangedAttackDamage());
-    this->FragTrap::setArmorDamageReduction(FragTrap::getArmorDamageReduction());
+    this->setHitPoints(100);
+    this->setMaxHitPoints(100);
+    this->setEnergyPoints(120);
+    this->setMaxEnergyPoints(120);
+    this->setLevel(1);
+    this->setName("Default");
+    this->setMeleeAttackDamage(60);
+    this->setRangedAttackDamage(20);
+    this->setArmorDamageReduction(5);
 
     std::cout << "SuperTrap default constructor called" << std::endl;
 }
 
-SuperTrap::SuperTrap(std::string name) : NinjaTrap(name)
+SuperTrap::SuperTrap(std::string name)
 {
-    this->FragTrap::setHitPoints(FragTrap::getHitPoints());
-    this->FragTrap::setMaxHitPoints(FragTrap::getMaxHitPoints());
-    this->NinjaTrap::setEnergyPoints(NinjaTrap::getEnergyPoints());
-    this->NinjaTrap::setMaxEnergyPoints(NinjaTrap::getMaxEnergyPoints());
-    this->NinjaTrap::setLevel(1);
-    this->NinjaTrap::setName(NinjaTrap::getName());
-    this->NinjaTrap::setMeleeAttackDamage(NinjaTrap::getMeleeAttackDamage());
-    this->FragTrap::setRangedAttackDamage(FragTrap::getRangedAttackDamage());
-    this->FragTrap::setArmorDamageReduction(FragTrap::getArmorDamageReduction());
+    this->setHitPoints(100);
+    this->setMaxHitPoints(100);
+    this->setEnergyPoints(120);
+    this->setMaxEnergyPoints(120);
+    this->setLevel(1);
+    this->setName(name);
+    this->setMeleeAttackDamage(60);
+    this->setRangedAttackDamage(20);
+    this->setArmorDamageReduction(5);
 
     std::cout << "SuperTrap name constructor called" << std::endl;
 }
@@ -49,6 +49,20 @@ SuperTrap::SuperTrap(std::string name) : NinjaTrap(name)
 SuperTrap::~SuperTrap()
 {
     std::cout << "SuperTrap destructing" << std::endl;
+}
+
+void SuperTrap::rangedAttack(std::string const &target) const
+{
+    std::cout << "FragTrap(SuperTrap) <" << this->getName() << "> attacks <" \
+    << target << "> at range, causing " << this->getRangedAttackDamage() << \
+	" points of damage !" << std::endl;
+}
+
+void SuperTrap::meleeAttack(std::string const &target) const
+{
+    std::cout << "NinjaTrap(SuperTrap) <" << this->getName() << "> attacks <" \
+    << target << "> in melee range, causing " << this->getMeleeAttackDamage() << \
+    " points of damage !" << std::endl;
 }
 
 SuperTrap& SuperTrap::operator=(SuperTrap const& rhs)

@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 16:49:30 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 17:30:21 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:27:05 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ class SuperTrap : public NinjaTrap, public FragTrap
         SuperTrap(std::string);
         ~SuperTrap();
         SuperTrap(SuperTrap const&);
-        SuperTrap& operator=(SuperTrap const&);        
+        SuperTrap& operator=(SuperTrap const&);
+        void rangedAttack(std::string const &target) const;
+        void meleeAttack(std::string const &target) const;    
     private:
 };
 

@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 13:49:51 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 15:24:35 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:12:15 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class ScavTrap : public ClapTrap
         ScavTrap(std::string name);
         ScavTrap& operator=(ScavTrap const &rhs);
         void challengeNewcomer(std::string const &target);
+        void rangedAttack(std::string const &target) const;
+        void meleeAttack(std::string const &target) const;
 		    
     protected:
 

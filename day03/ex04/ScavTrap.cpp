@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 13:51:12 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 15:38:02 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:21:16 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &rhs)
     this->setArmorDamageReduction(rhs.getArmorDamageReduction());
     
     return *this;
+}
+
+void ScavTrap::rangedAttack(std::string const &target) const
+{
+    std::cout << "ScavTrap <" << this->getName() << "> attacks <" \
+    << target << "> at range, causing " << this->getRangedAttackDamage() << \
+	" points of damage !" << std::endl;
+}
+
+void ScavTrap::meleeAttack(std::string const &target) const
+{
+    std::cout << "ScavTrap <" << this->getName() << "> attacks <" \
+    << target << "> in melee range, causing " << this->getMeleeAttackDamage() << \
+    " points of damage !" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy)

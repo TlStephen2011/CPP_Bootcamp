@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 16:16:57 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 16:35:46 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:16:28 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class NinjaTrap : public ClapTrap
         ~NinjaTrap();
         NinjaTrap(NinjaTrap const&);
         NinjaTrap& operator=(NinjaTrap const&);
+        void rangedAttack(std::string const &target) const;
+        void meleeAttack(std::string const &target) const;
         void ninjaShoebox(ClapTrap&);
         void ninjaShoebox(NinjaTrap&);
         void ninjaShoebox(FragTrap&);

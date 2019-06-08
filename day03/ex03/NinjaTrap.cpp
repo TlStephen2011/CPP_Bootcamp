@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 16:16:59 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/07 16:46:11 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/08 16:17:10 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ NinjaTrap& NinjaTrap::operator=(NinjaTrap const &rhs)
     this->setArmorDamageReduction(rhs.getArmorDamageReduction());
     
     return *this;
+}
+
+void NinjaTrap::rangedAttack(std::string const &target) const
+{
+    std::cout << "NinjaTrap <" << this->getName() << "> attacks <" \
+    << target << "> at range, causing " << this->getRangedAttackDamage() << \
+	" points of damage !" << std::endl;
+}
+
+void NinjaTrap::meleeAttack(std::string const &target) const
+{
+    std::cout << "NinjaTrap <" << this->getName() << "> attacks <" \
+    << target << "> in melee range, causing " << this->getMeleeAttackDamage() << \
+    " points of damage !" << std::endl;
 }
 
 NinjaTrap::NinjaTrap(NinjaTrap const &copy)
