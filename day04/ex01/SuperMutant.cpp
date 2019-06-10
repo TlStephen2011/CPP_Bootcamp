@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 23:01:09 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/09 23:01:09 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/10 17:16:52 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ SuperMutant::~SuperMutant()
 
 SuperMutant& SuperMutant::operator=(SuperMutant const &rhs)
 {
-    //TODO:: complete assignment
-    (void)rhs;    
+    (void)rhs;
     return *this;
 }
 
