@@ -15,6 +15,7 @@
 #include <iostream>
 
 Form::Form() :
+    _target("N/A"),
     _name("default"),
     _minGradeToSign(1),
     _minGradeToExecute(1),
@@ -23,7 +24,8 @@ Form::Form() :
     return;
 }
 
-Form::Form(std::string name, int signingGrade, int executeGrade) :
+Form::Form(std::string target, std::string name, int signingGrade, int executeGrade) :
+    _target(target),
     _name(name),
     _minGradeToSign(signingGrade),
     _minGradeToExecute(executeGrade),
@@ -47,6 +49,7 @@ Form::~Form()
 }
 
 Form::Form(Form const &copy) :
+    _target(copy.getTarget()),
     _name(copy.getName()),
     _minGradeToSign(copy.getMinGradeToSign()),
     _minGradeToExecute(copy.getMinGradeToExecute()),
@@ -105,6 +108,11 @@ const char* Form::GradeTooLowException::what() const throw()
     return "Grade requirement too low";
 }
 
+const char* Form::ExecuteOnUnsignedFormException::what() const throw()
+{
+    return "Form is not yet signed and therefore cannot be executed on";
+}
+
 std::ostream& operator<<(std::ostream &o, Form const &other)
 {
 
@@ -114,4 +122,22 @@ std::ostream& operator<<(std::ostream &o, Form const &other)
     other.getMinGradeToSign() << " and a min grade to execute of " << \
     other.getMinGradeToExecute() << " and is " << isSigned;
     return o;
+}
+
+std::string Form::getTarget() const
+{
+    return this->_target;
+}
+
+bool Form::canExecute(Bureaucrat const &b) const
+{
+    if (b.getGrade() > this->_minGradeToExecute)
+    {
+        throw Form::GradeTooLowException();
+    }
+    else if (this->_isSigned == false)
+    {
+        throw Form::ExecuteOnUnsignedFormException();
+    }
+    return true;
 }

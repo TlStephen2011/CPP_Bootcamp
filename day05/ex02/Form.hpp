@@ -33,7 +33,13 @@ class Form
                 virtual const char *what() const throw();
         };
 
-        Form(std::string, int, int);
+        class ExecuteOnUnsignedFormException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+
+        Form(std::string, std::string, int, int);
         ~Form();
         Form(Form const&);
         Form& operator=(Form const&);
@@ -42,9 +48,15 @@ class Form
         int getMinGradeToExecute() const;
         bool getFormSignedState() const;
         void beSigned(Bureaucrat const&);
+        virtual void execute(Bureaucrat const&) const = 0;
+        std::string getTarget() const;
+
+    protected:
+        bool canExecute(Bureaucrat const&) const;
 
     private:
         Form();
+        std::string const _target;
         std::string const _name;
         int const _minGradeToSign;
         int const _minGradeToExecute;

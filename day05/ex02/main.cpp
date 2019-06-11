@@ -11,22 +11,32 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iostream>
 #include "Form.hpp"
+#include <math.h>
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
-    Bureaucrat bob("Bob", 1);
-    Bureaucrat jim("Jimmy", 150);
-    Form f("Important form", 25, 20);
-    Form dummy("Suicide form", 125, 100);
+    srand(time(NULL));
+    
+    Bureaucrat arthur("Arthur", 5);
+    
+    PresidentialPardonForm ppf("Harry");
+    ppf.execute(arthur);
+    arthur.signForm(ppf);
+    ppf.execute(arthur);
 
-    bob.signForm(f);
-    jim.signForm(dummy);
+    RobotomyRequestForm rrf("Ron");
+    rrf.execute(arthur);
+    arthur.signForm(rrf);
+    rrf.execute(arthur);
 
-    std::cout << std::endl;
-    std::cout << bob << std::endl;
-    std::cout << f << std::endl;
-    std::cout << dummy << std::endl;
+    ShrubberyCreationForm scf("Privet Drive, Little Whinging");
+    scf.execute(arthur);
+    arthur.signForm(scf);
+    scf.execute(arthur);
     return 0;
 }

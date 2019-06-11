@@ -12,13 +12,21 @@
 
 #ifndef PRESIDENTIALPARDONFROM_HPP
 # define PRESIDENTIALPARDONFROM_HPP
+# include <string>
+# include "Form.hpp"
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public Form
 {
     public:
-
+        PresidentialPardonForm(std::string);
+        ~PresidentialPardonForm();
+        PresidentialPardonForm& operator=(PresidentialPardonForm const&);
+        PresidentialPardonForm(PresidentialPardonForm const&);
+        virtual void execute(Bureaucrat const&) const;
 
     private:
+        PresidentialPardonForm();
+        std::string _target;
 };
 
 #endif

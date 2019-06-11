@@ -12,13 +12,22 @@
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
+# include <string>
+# include "Form.hpp"
 
-class ShrubberyCreationForm
+class ShrubberyCreationForm : public Form
 {
     public:
+        ShrubberyCreationForm(std::string);
+        ~ShrubberyCreationForm();
+        ShrubberyCreationForm& operator=(ShrubberyCreationForm const&);
+        ShrubberyCreationForm(ShrubberyCreationForm const&);
+        virtual void execute(Bureaucrat const&) const;
 
     private:
-    
+        ShrubberyCreationForm();
+        void drawTrees(std::ofstream&, int) const;
+        std::string _target;
 };
 
 #endif
