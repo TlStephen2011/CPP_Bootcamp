@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 02:23:26 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/11 03:13:38 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/11 11:12:35 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FORM_HPP
 # include <exception>
 # include <string>
-# include "Bureaucrat.hpp"
+
+// Forward-declare Bureaucrat to prevent recursive inclusion
+class Bureaucrat;
 
 class Form
 {

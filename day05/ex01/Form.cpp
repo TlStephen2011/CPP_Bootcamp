@@ -6,11 +6,12 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 02:34:32 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/11 03:11:14 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/11 11:17:46 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 Form::Form() :
@@ -111,6 +112,6 @@ std::ostream& operator<<(std::ostream &o, Form const &other)
 
     o << other.getName() << ", form has min grade to sign of " << \
     other.getMinGradeToSign() << " and a min grade to execute of " << \
-    other.getMinGradeToExecute() << " and is " << isSigned << std::endl;
+    other.getMinGradeToExecute() << " and is " << isSigned;
     return o;
 }
