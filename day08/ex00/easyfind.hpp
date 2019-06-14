@@ -6,9 +6,12 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 14:23:25 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/14 15:17:23 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/14 16:19:40 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 template <typename T>
 int easyfind(T &container, int toFind)
@@ -25,3 +28,5 @@ int easyfind(T &container, int toFind)
 
     return -1;
 }
+
+#endif
