@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 01:15:38 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/15 01:19:36 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/15 16:10:07 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int main()
     mstack.push(737);
     mstack.push(0);
 
-    MutantStack<int>::
+    MutantStack<int>::iterator it = mstack.begin();
+    MutantStack<int>::iterator ite = mstack.end();
+
+    std::cout << *it << std::endl;
 
     return 0;
 }
