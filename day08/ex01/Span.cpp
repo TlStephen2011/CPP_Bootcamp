@@ -6,7 +6,7 @@
 /*   By: tstephen <tstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 22:53:48 by tstephen          #+#    #+#             */
-/*   Updated: 2019/06/15 01:05:35 by tstephen         ###   ########.fr       */
+/*   Updated: 2019/06/15 13:12:07 by tstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,30 @@ const char* Span::ContainerFullException::what() const throw()
 const char* Span::SpanCalcException::what() const throw()
 {
     return "Container does not contain enough data to perform span calculation.";
+}
+
+void Span::addNumber(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end)
+{
+    int numbersToInsert = std::distance(begin, end);
+    if (numbersToInsert - this->_current_size > this->_max_size)
+    {
+        throw Span::ContainerFullException();
+    }
+
+    std::vector<int>::iterator itr = this->_container->begin();
+    itr += this->_current_size;
+
+    std::copy(begin, end, itr);
+    this->_current_size += numbersToInsert;
+}
+
+void Span::display() const
+{
+    std::vector<int>::const_iterator itr;
+
+    for (itr = this->_container->begin(); itr != this->_container->end(); itr++)
+    {
+        std::cout << *itr << "   ";
+    }
+    std::cout << std::endl;
 }
